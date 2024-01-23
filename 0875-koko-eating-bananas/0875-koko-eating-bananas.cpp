@@ -23,7 +23,7 @@ public:
         int low=1;
         int high=FindMax(piles);
         while(low<=high){
-            int mid=(low+high)/2;
+            int mid=low+(high-low)/2;
             if(!Totalhours(piles,h,mid)){
                 low=mid+1;
             }else{
