@@ -5,8 +5,11 @@ public:
         int sum=0;
         for(int i=0;i<n;i++){
             sum=sum+ceil((double)(nums[i])/(double)div);
+            if(sum>threshold){
+                return 0;
+            }
         }
-        return sum;
+        return 1;
     }
     int smallestDivisor(vector<int>& nums, int threshold) {
         
@@ -16,11 +19,9 @@ public:
         int high=*max_element(nums.begin(),nums.end());
         while(low<=high){
             int mid=low+(high-low)/2;
-            int currentsum=sum(nums,mid,threshold);
-            if(currentsum>threshold){
+            if(!sum(nums,mid,threshold)){
                 low=mid+1;
-            }
-            else{
+            }else{
                 high=mid-1;
             }
         }
